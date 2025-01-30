@@ -1,10 +1,14 @@
+
 /*
 	pitch detector in p5.js
 	Listens to the microphone, displays the loudest pitch
 	waveform drawing routine comes from the p5.FFT example.
 	created 15 Nov 2018
 	by Tom Igoe
+  https://editor.p5js.org/icm4.0/sketches/v7lQl0NhH
 */
+
+
 
 
 var mic; // an object for the microphone input
@@ -210,9 +214,18 @@ function draw() {
 
     let x = map(i, 0, waveform.length , 0, windowHeight);
     let y = map(waveform[i] , -1, 1, 0, windowHeight);
+    // vertex(x * cos(i), y * sin(i));
+
+    // let r = map(waveform.length, 0, 1, 10, 300);
+    // let x = r * cos(i);
+    // let y = r * sin(i);
     vertex(x, y);
 
+
+    
+
     if (freq > 4000) {
+
 
    
       // text(floor(freq), 500, 20)
@@ -224,7 +237,7 @@ function draw() {
       let x = map(i, 10, waveform.length, 0, 500);
       let y = map(waveform[i], -10, 1, 0, 500); 
     
-      vertex(x , y);
+      vertex(x * cos(i), y);
 
     } else if (freq >  3000 && freq < 4000) {
       stroke('#800080'); //waveform is purple 
