@@ -160,6 +160,8 @@ function draw() {
    let centerX = width / 2;
    let centerY = height / 2;
 
+  //  translate(centerX, centerY); // Translate to the center of the canvas
+
    
 
    // Draw the vertical line
@@ -237,16 +239,27 @@ function draw() {
   
   
   for (var i = 0; i < waveform.length; i++) {
+
+    // Basic Visible Wave Shape
     
-
-    let x = map(i, 0, waveform.length , 0, windowHeight);
-    let y = map(waveform[i] , -1, 1, 0, windowHeight);
-    // vertex(x * cos(i), y * sin(i));
-
-    // let r = map(waveform.length, 0, 1, 10, 300);
-    // let x = r * cos(i);
-    // let y = r * sin(i);
+    let x = map(i, 0, waveform.length, 0, width);
+    let y = map(waveform[i] * 5, -1, 1, 0, height);
     vertex(x, y);
+
+    // Map Function: 
+    // map(value, start1, stop1, start2, stop2)
+    // value: number to be converted 
+    // start1: lower bound of value's current range 
+    // stop 1: the upper bound of the value's current range 
+    // start 2: the lower bound of the target range
+    // stop2: the upper bound of the target range 
+
+    // Getting the waveform in a cirlce
+
+    // let radius = map(waveform[i], -1, 1, 50, 200); // Adjust the radius range as needed
+    // let x = radius * cos(angle + map(i, 0, waveform.length, 0, TWO_PI));
+    // let y = radius * sin(angle + map(i, 0, waveform.length, 0, TWO_PI));
+    // vertex(x, y);
 
     
 
@@ -305,6 +318,7 @@ function draw() {
     // }
   }
   endShape();
+  // angle += angleSpeed; // Increment the angle to rotate the waveform
 
   // To ensure the canvas resizes with the window
 function windowResized() {
