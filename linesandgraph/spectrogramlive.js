@@ -160,6 +160,8 @@ function draw() {
    let centerX = width / 2;
    let centerY = height / 2;
 
+   
+
    // Draw the vertical line
   stroke(255); // Set stroke color to black
   line(centerX, 0, centerX, height)
@@ -246,56 +248,67 @@ function draw() {
     // let y = r * sin(i);
     vertex(x, y);
 
+    
+
 
     
 
-    if (freq > 4000) {
+    // if (freq > 4000) {
 
 
    
-      // text(floor(freq), 500, 20)
-      stroke('#ff00ff'); // waveform  is magenta
+    //   // text(floor(freq), 500, 20)
+    //   stroke('#ff00ff'); // waveform  is magenta
       
 
-    //   fill(100, 102, 0) 
+    // //   fill(100, 102, 0) 
 
-      let x = map(i, 10, waveform.length, 0, 500);
-      let y = map(waveform[i], -10, 1, 0, 500); 
+    //   let x = map(i, 10, waveform.length, 0, 500);
+    //   let y = map(waveform[i], -10, 1, 0, 500); 
     
-      vertex(x, y);
+    //   vertex(x, y);
 
-    } else if (freq >  3000 && freq < 4000) {
-      stroke('#800080'); //waveform is purple 
-      fill("#0099FF"); // fill is purple
+    // } else if (freq >  3000 && freq < 4000) {
+    //   stroke('#800080'); //waveform is purple 
+    //   fill("#0099FF"); // fill is purple
 
-      let x = map(i, 10, waveform.length, 0, 500);
-      let y = map(waveform[i], -10, 1, 0, 500);
-      vertex(x + 1000, y - 1000);
+    //   let x = map(i, 10, waveform.length, 0, 500);
+    //   let y = map(waveform[i], -10, 1, 0, 500);
+    //   vertex(x + 1000, y - 1000);
 
-    } else if (freq >  2000 && freq < 3000) {
+    // } else if (freq >  2000 && freq < 3000) {
 
-      stroke('##F44336'); //waveform is red
-      fill("#F44336"); // fill is red
+    //   stroke('##F44336'); //waveform is red
+    //   fill("#F44336"); // fill is red
 
-      let x = map(i, 10, waveform.length, 0, 500);
-      let y = map(waveform[i], -1000, 1, 0, 500);
-      vertex(x - 1000, y + 1000);
+    //   let x = map(i, 10, waveform.length, 0, 500);
+    //   let y = map(waveform[i], -1000, 1, 0, 500);
+    //   vertex(x - 1000, y + 1000);
 
-    } else {
+    // } else {
 
-      // restored to previous state
-      // TODO Get this design to fill Q4 area
-      
-            
-      fill(0, 0, 255) //fill is blue
-      stroke('#0099FF');
+    //     // Example waveform array for demonstration
+    //   // let waveform = new Array(100).fill(0).map((_, i) => map(sin(i), -1, 1, 100, 1));
 
-      let x = map(i, 1000, waveform.length, 0, width);
-      let y = map(waveform[i], -1000, 1, 0, height);
-      vertex(x - 1000, y - 1000);
 
-    }
+  
+    //   fill(0, 0, 255) //fill is blue
+    //   stroke('#0099FF');
+
+    //   // let x = map(i, 10,  100, 0, width);
+    //   // let y = map(waveform[i],  100, 1, 0, height);
+    //   // vertex(centerX, 4 * centerY / 3);
+    //   let x = map(i, 10, 100, centerX, width);
+    //   let y = map(waveform[i], 100, 1, centerY, height);
+    //   vertex(x, y);
+
+    // }
   }
   endShape();
+
+  // To ensure the canvas resizes with the window
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
 
 }
