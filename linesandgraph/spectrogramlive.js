@@ -283,6 +283,8 @@ function draw() {
 
     } else {
 
+      // restored to previous state
+      // TODO Get this design to fill Q4 area
       
             
       fill(0, 0, 255) //fill is blue
