@@ -118,9 +118,7 @@ function setup() {
   // set the mic as the input to the analyzer:
   fft.setInput(mic);
   
-  // Text size
-  textAlign(LEFT, TOP);
-  textSize(64);
+
 }
 
 function draw() {
@@ -152,6 +150,33 @@ function draw() {
   for (let i = 0; i < loudestSounds.length; i++) {
     text(`Loudest ${i + 1}: ${nf(loudestSounds[i].amplitude, 1, 3)}`, 10, 20 + i * 20);
   }
+
+  // Text size
+  textAlign(LEFT, TOP);
+  textSize(64);
+
+  // create a canvas that's separated into quadrants 
+   // Calculate the center of the canvas
+   let centerX = width / 2;
+   let centerY = height / 2;
+
+   // Draw the vertical line
+  stroke(255); // Set stroke color to black
+  line(centerX, 0, centerX, height)
+
+  // Draw the horizontal line
+  line(0, centerY, width, centerY);
+
+  // Optionally, you can add labels to each quadrant
+  textSize(32);
+  fill(0);
+  textAlign(CENTER, CENTER);
+  text("Q1", centerX / 2, centerY / 2); // Top-left quadrant
+  text("Q2", 3 * centerX / 2, centerY / 2); // Top-right quadrant
+  text("Q3", centerX / 2, 3 * centerY / 2); // Bottom-left quadrant
+  text("Q4", 3 * centerX / 2, 3 * centerY / 2); // Bottom-right quadrant
+
+
 
 
 
@@ -237,7 +262,7 @@ function draw() {
       let x = map(i, 10, waveform.length, 0, 500);
       let y = map(waveform[i], -10, 1, 0, 500); 
     
-      vertex(x * cos(i), y);
+      vertex(x, y);
 
     } else if (freq >  3000 && freq < 4000) {
       stroke('#800080'); //waveform is purple 
@@ -259,13 +284,14 @@ function draw() {
     } else {
 
       
+            
       fill(0, 0, 255) //fill is blue
       stroke('#0099FF');
 
       let x = map(i, 1000, waveform.length, 0, width);
       let y = map(waveform[i], -1000, 1, 0, height);
       vertex(x - 1000, y - 1000);
-      
+
     }
   }
   endShape();
